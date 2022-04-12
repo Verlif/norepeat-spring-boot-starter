@@ -96,6 +96,8 @@ public interface RepeatJudgment {
 
 与`NoRepeatCache`类似，自定义的`RepeatJudgment`需要加上`@Component`注解。开发者可以制定多个`RepeatJudgment`以便不同接口使用不同策略。
 
+__注意：请尽量使用自定义的请求缓存，默认的缓存由于性能与拓展的考虑，没有进行严格地读取控制。__
+
 ## 引入依赖
 
 1. 添加Jitpack仓库源

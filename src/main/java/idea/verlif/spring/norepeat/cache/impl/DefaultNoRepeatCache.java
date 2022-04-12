@@ -21,7 +21,7 @@ public final class DefaultNoRepeatCache implements NoRepeatCache {
     }
 
     @Override
-    public void add(String key, RequestFlag flag) {
+    public synchronized void add(String key, RequestFlag flag) {
         flagMap.put(key, flag);
     }
 
