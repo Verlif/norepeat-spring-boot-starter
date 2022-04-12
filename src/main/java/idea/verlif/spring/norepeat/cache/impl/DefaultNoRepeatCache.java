@@ -4,8 +4,8 @@ import idea.verlif.spring.norepeat.cache.NoRepeatCache;
 import idea.verlif.spring.norepeat.entity.RequestFlag;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Verlif
@@ -17,16 +17,16 @@ public final class DefaultNoRepeatCache implements NoRepeatCache {
     private final Map<String, RequestFlag> flagMap;
 
     public DefaultNoRepeatCache() {
-        flagMap = new ConcurrentHashMap<>();
+        flagMap = new HashMap<>();
     }
 
     @Override
-    public synchronized void add(String key, RequestFlag flag) {
+    public void add(String key, RequestFlag flag) {
         flagMap.put(key, flag);
     }
 
     @Override
-    public synchronized RequestFlag get(String key) {
+    public RequestFlag get(String key) {
         RequestFlag flag = flagMap.get(key);
         if (flag != null && (flag.getTime() + flag.getInterval()) < System.currentTimeMillis()) {
             flagMap.remove(key);

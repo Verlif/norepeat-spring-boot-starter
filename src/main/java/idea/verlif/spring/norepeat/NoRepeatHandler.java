@@ -33,13 +33,13 @@ import java.util.Map;
 @Component
 public class NoRepeatHandler {
 
-    @Autowired
-    private NoRepeatCache noRepeatCache;
+    private final NoRepeatCache noRepeatCache;
 
     private final RepeatJudgment defaultJudgment;
     private final Map<Class<?>, RepeatJudgment> judgmentMap;
 
-    public NoRepeatHandler(@Autowired ApplicationContext appContext) {
+    public NoRepeatHandler(@Autowired NoRepeatCache cache, @Autowired ApplicationContext appContext) {
+        this.noRepeatCache = cache;
         this.defaultJudgment = new DefaultRepeatJudgment();
         this.judgmentMap = new HashMap<>();
         Map<String, RepeatJudgment> judgmentMap = appContext.getBeansOfType(RepeatJudgment.class);
@@ -66,17 +66,19 @@ public class NoRepeatHandler {
         HttpServletRequest request = getRequest();
         if (request != null) {
             String key = noRepeatCache.genKey(request);
-            RequestFlag flag = noRepeatCache.get(key);
-            RequestFlag nowFlag = new RequestFlag(request, noRepeat.interval());
-            if (flag != null) {
-                if (repeatJudgment.isRepeat(flag, nowFlag)) {
-                    if (!noRepeat.isIgnored()) {
-                        sendTip(noRepeat.message());
+            synchronized (noRepeatCache) {
+                RequestFlag flag = noRepeatCache.get(key);
+                RequestFlag nowFlag = new RequestFlag(request, noRepeat.interval());
+                if (flag != null) {
+                    if (repeatJudgment.isRepeat(flag, nowFlag)) {
+                        if (!noRepeat.isIgnored()) {
+                            sendTip(noRepeat.message());
+                        }
+                        return null;
                     }
-                    return null;
                 }
+                noRepeatCache.add(key, nowFlag);
             }
-            noRepeatCache.add(key, nowFlag);
         }
 
         return joinPoint.proceed();

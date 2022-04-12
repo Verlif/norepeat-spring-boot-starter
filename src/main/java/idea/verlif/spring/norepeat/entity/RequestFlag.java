@@ -13,7 +13,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2022/4/11 14:33
  */
-public class RequestFlag implements Serializable {
+public final class RequestFlag implements Serializable {
 
     private final long time;
 

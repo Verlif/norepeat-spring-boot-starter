@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface NoRepeatCache {
 
     /**
-     * 添加请求标识
+     * 添加请求标识。
      *
      * @param key  请求key
      * @param flag 请求标识
