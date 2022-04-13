@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>idea.verlif</groupId>
-    <artifactId>norepeat-sprint-boot-starter</artifactId>
+    <artifactId>norepeat-spring-boot-starter</artifactId>
     <version>2.6.6-1.1</version>
 
     <parent>
