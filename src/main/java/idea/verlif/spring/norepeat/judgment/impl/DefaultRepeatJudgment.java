@@ -41,7 +41,7 @@ public class DefaultRepeatJudgment implements RepeatJudgment {
             }
             // 判断header
             Map<String, String> oldHeaderMap = oldFlag.getHeaderMap();
-            Map<String, String> newHeaderMap = oldFlag.getHeaderMap();
+            Map<String, String> newHeaderMap = newFlag.getHeaderMap();
             if (oldHeaderMap.size() != newHeaderMap.size()) {
                 return false;
             }

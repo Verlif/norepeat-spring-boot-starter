@@ -120,7 +120,7 @@ __注意：请尽量使用自定义的请求缓存，默认的缓存使用的是
 >        <dependency>
 >            <groupId>com.github.Verlif</groupId>
 >            <artifactId>norepeat-spring-boot-starter</artifactId>
->            <version>2.6.6-1.1</version>
+>            <version>2.6.6-1.2</version>
 >        </dependency>
 >    </dependencies>
 > ```
