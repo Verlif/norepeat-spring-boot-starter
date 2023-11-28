@@ -100,27 +100,31 @@ __注意：请尽量使用自定义的请求缓存，默认的缓存使用的是
 
 ## 引入依赖
 
+[![Release](https://jitpack.io/v/Verlif/norepeat-spring-boot-starter.svg)](https://jitpack.io/#Verlif/norepeat-spring-boot-starter)
+
 1. 添加Jitpack仓库源
 
-> maven
-> ```xml
-> <repositories>
->    <repository>
->        <id>jitpack.io</id>
->        <url>https://jitpack.io</url>
->    </repository>
-> </repositories>
-> ```
+   maven
+
+   ```xml
+   <repositories>
+      <repository>
+          <id>jitpack.io</id>
+          <url>https://jitpack.io</url>
+      </repository>
+   </repositories>
+   ```
 
 2. 添加依赖
 
-> maven
-> ```xml
->    <dependencies>
->        <dependency>
->            <groupId>com.github.Verlif</groupId>
->            <artifactId>norepeat-spring-boot-starter</artifactId>
->            <version>2.6.6-1.2</version>
->        </dependency>
->    </dependencies>
-> ```
+   maven
+
+   ```xml
+      <dependencies>
+          <dependency>
+              <groupId>com.github.Verlif</groupId>
+              <artifactId>norepeat-spring-boot-starter</artifactId>
+              <version>版本号</version>
+          </dependency>
+      </dependencies>
+   ```
